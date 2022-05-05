@@ -6,7 +6,7 @@
     "packages": [
       "apps/*",
       "libs/*",
-      "components/*"
+      "libs/components/*"
     ]
   },
   "license": "MIT"
