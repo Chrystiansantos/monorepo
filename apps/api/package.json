@@ -1,0 +1,12 @@
+{
+  "name": "@monorepo/api",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "license": "MIT",
+  "dependencies": {
+    "@monorepo/models": "ˆ1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.4"
+  }
+}
