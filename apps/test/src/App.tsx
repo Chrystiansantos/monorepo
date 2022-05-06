@@ -1,14 +1,27 @@
-import { Login } from '@CITBot/components';
-// import { Sidebar } from '@CITBot/components';
+import { Login, LoginData, Button } from "@monorepo/components";
+import { FormEvent, useState } from "react";
 
-function App() {
+const login = (event: FormEvent, data: LoginData): void => {
+  event.preventDefault();
+
+  console.log(data);
+};
+
+const App = () => {
+  const [loginData, setLoginData] = useState<LoginData>({} as LoginData);
+
   return (
     <>
       <h1>Ola mundo</h1>
-      <Login></Login>
-      {/* <Sidebar></Sidebar> */}
+      <Login
+        onSubmit={(event: FormEvent) => login(event, loginData)}
+        formState={loginData}
+        setFormState={setLoginData}
+        submitButtonText="Entrar"
+      />
+      <Button type="button" onClick={() => console.log("Oi")}></Button>
     </>
   );
-}
+};
 
 export default App;

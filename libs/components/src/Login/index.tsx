@@ -1,12 +1,49 @@
-import React from "react";
-import styles from './Login.module.css';
+import React, { FormEvent } from "react";
+import { StyledLogin } from "./styles";
 
-export default function Login() {
-  return (
-    <form className={styles.form}>
-      <input type="text"></input> <br />
-      <input type="password" /> <br />
-      <button type="submit">Enviar</button>
-    </form>
-  )
+export interface LoginData {
+  username: string;
+  password: string;
 }
+
+interface LoginProps {
+  onSubmit: (event: FormEvent) => void;
+  formState: LoginData;
+  setFormState: (data: LoginData) => void;
+  submitButtonText: string;
+}
+
+export const Login = ({
+  formState,
+  setFormState,
+  submitButtonText,
+  onSubmit,
+}: LoginProps) => {
+  return (
+    <StyledLogin onSubmit={onSubmit}>
+      <input
+        name="username"
+        type="text"
+        onChange={(event) =>
+          setFormState({
+            ...formState,
+            username: event.target.value,
+          })
+        }
+      />
+      <br />
+      <input
+        name="password"
+        type="password"
+        onChange={(event) =>
+          setFormState({
+            ...formState,
+            password: event.target.value,
+          })
+        }
+      />
+      <br />
+      <button type="submit">{submitButtonText}</button>
+    </StyledLogin>
+  );
+};
