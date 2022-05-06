@@ -6,9 +6,12 @@ const login = (event: FormEvent, data: LoginData): void => {
 
   console.log(data);
 };
-
 const App = () => {
   const [loginData, setLoginData] = useState<LoginData>({} as LoginData);
+
+  const handleButton = () => {
+    console.log('oi')
+  }
 
   return (
     <>
@@ -19,9 +22,11 @@ const App = () => {
         setFormState={setLoginData}
         submitButtonText="Entrar"
       />
-      <Button type="button" onClick={() => console.log("Oi")}></Button>
+      <Button onClick={()=> console.log('oi')}>Ola mundo</Button>
+      <Button bgButton="#212529" onClick={()=> console.log('oi')} >Ola mundo 2</Button>
     </>
-  );
+  )
+
 };
 
 export default App;

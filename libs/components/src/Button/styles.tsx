@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
-interface StyledButtonProps {
-  disabled: boolean;
+interface IStyledButtonProps {
+  bgButton?: string;
 }
 
-export const StyledButton = styled.button<StyledButtonProps>`
-  background-color: red;
+// export const StyledButton = styled.button<StyledButtonProps>`
+export const StyledButton = styled.button<IStyledButtonProps>`
+  background-color: ${({ bgButton }) => bgButton || 'red'};
   color: white;
   font-weight: bold;
+  /* height: 400px;
+  width: 400px; */
 `;

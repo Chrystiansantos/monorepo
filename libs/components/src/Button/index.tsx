@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { StyledButton } from "./styles";
 
 interface ButtonProps {
   type?: "button" | "submit" | "reset";
@@ -6,6 +7,7 @@ interface ButtonProps {
   disabled?: boolean;
   onClick: () => void;
   children?: ReactNode;
+  bgButton?: string;
 }
 
 export const Button = ({
@@ -14,10 +16,11 @@ export const Button = ({
   disabled = false,
   onClick,
   children,
+  bgButton
 }: ButtonProps) => {
   return (
-    <Button type={type} disabled={disabled} onClick={onClick}>
+    <StyledButton type={type} disabled={disabled} bgButton={bgButton} onClick={onClick}>
       {children ? children : title}
-    </Button>
+    </StyledButton>
   );
 };
