@@ -6,7 +6,6 @@ const login = (event: FormEvent, data: LoginData): void => {
 
   console.log(data);
 };
-
 const App = () => {
   const [loginData, setLoginData] = useState<LoginData>({} as LoginData);
   const [first, setfirst] = useState('')
@@ -38,6 +37,10 @@ const App = () => {
     },
   ]
 
+  const handleButton = () => {
+    console.log('oi')
+  }
+
   return (
     <>
       <h1>Ola mundo</h1>
@@ -47,11 +50,12 @@ const App = () => {
         setFormState={setLoginData}
         submitButtonText="Entrar"
       />
-      <Button type="button" onClick={() => console.log("Oi")}></Button>
-
       <Select label="Selecione" options={options} onChangeValue={setfirst} value={first} />
+      <Button onClick={()=> console.log('oi')}>Ola mundo</Button>
+      <Button bgButton="#212529" onClick={()=> console.log('oi2')} >Ola mundo 2</Button>
     </>
-  );
+  )
+
 };
 
 export default App;
