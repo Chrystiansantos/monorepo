@@ -1,31 +1,42 @@
-import React from "react";
+import React from 'react';
+import { InputHTMLAttributes, } from 'react';
 
-import { Container, Label, SelectStyle } from './styles'
+import { Container, ContainerLabel, Label, SelectStyle, Info } from './styles';
 
-interface IOptions {
-  value: string | number;
-  label: string;
-
-}
-
-interface ISelectProps {
-  label: string;
-  options: IOptions[];
+interface IInputComponentProps extends InputHTMLAttributes<HTMLSelectElement> {
+  titleInput?: string;
+  options: {
+    value: string;
+    label: string;
+  }[];
   value: string;
   onChangeValue: (data: string) => void;
+  textInfo?: string;
 }
 
-export const Select = ({ label, options, value, onChangeValue }: ISelectProps) => {
+export function Select({
+  titleInput,
+  required,
+  options,
+  value,
+  onChangeValue,
+  textInfo,
+  ...rest }: IInputComponentProps) {
   return (
     <Container>
-      <Label>{label}</Label>
+      <ContainerLabel>
+        <Label required={!!required}>{titleInput}</Label>
+        {textInfo && <Info textInfo={textInfo}>i</Info>}
+      </ContainerLabel>
+
       <SelectStyle
         value={value}
-        onChange={(event) => onChangeValue(event.target.value)}
+        onChange={(e) => onChangeValue(e.target.value)}
+        {...rest}
       >
         {
-          options.map(el => (
-            <option key={el.value} value={el.value}>{el.label}</option>
+          options.map(({ value, label }) => (
+            <option key={value} value={value}>{label}</option>
           ))
         }
       </SelectStyle>

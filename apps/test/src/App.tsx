@@ -1,61 +1,35 @@
-import { Login, LoginData, Button, Select } from "@monorepo/components";
-import { FormEvent, useState } from "react";
+import { Input, Select, NumberCount, TextArea, CheckBox } from "@monorepo/components";
+import { useState } from "react";
 
-const login = (event: FormEvent, data: LoginData): void => {
-  event.preventDefault();
+import { InputButton } from "./components/InputButton";
 
-  console.log(data);
-};
+import { Container } from './styles'
+import { GlobalStyle } from "./styles/global";
+
 const App = () => {
-  const [loginData, setLoginData] = useState<LoginData>({} as LoginData);
-  const [first, setfirst] = useState('')
+  const [option, setOption] = useState('1');
+  const [value, setValue] = useState<number>(0);
+  const [textArea, setTextArea] = useState('')
 
   const options = [
-    {
-      label: 'Audi',
-      value: '1',
-    },
-    {
-      label: 'BMW',
-      value: '2',
-    },
-    {
-      label: 'Citroen',
-      value: '3',
-    },
-    {
-      label: 'Ford',
-      value: '4',
-    },
-    {
-      label: 'Honda',
-      value: '5',
-    },
-    {
-      label: 'Jaguar',
-      value: '6',
-    },
-  ]
-
-  const handleButton = () => {
-    console.log('oi')
-  }
+    { value: '1', label: 'opção 1' },
+    { value: '2', label: 'opção 2' },
+    { value: '3', label: 'opção 3' }
+  ];
 
   return (
-    <>
-      <h1>Ola mundo</h1>
-      <Login
-        onSubmit={(event: FormEvent) => login(event, loginData)}
-        formState={loginData}
-        setFormState={setLoginData}
-        submitButtonText="Entrar"
-      />
-      <Select label="Selecione" options={options} onChangeValue={setfirst} value={first} />
-      <Button onClick={()=> console.log('oi')}>Ola mundo</Button>
-      <Button bgButton="#212529" onClick={()=> console.log('oi2')} >Ola mundo 2</Button>
-    </>
-  )
+    <Container>
+      <Input type="text" value="Input Text" titleInput="Text Field" required></Input>
+      <Input type="text" placeholder="Ola"></Input>
+      <Select options={options} onChangeValue={setOption} value={option} titleInput="Select Field" required textInfo="Ola mundo 123"></Select>
+      <NumberCount titleInput="Number Count" required={false} setValue={setValue} value={value}></NumberCount>
+      <TextArea titleInput="Text Area" required value={textArea} setValue={setTextArea} placeholder="Text Area" ></TextArea>
+      <CheckBox />
+      <InputButton></InputButton>
+      <GlobalStyle />
 
+    </Container>
+  )
 };
 
 export default App;

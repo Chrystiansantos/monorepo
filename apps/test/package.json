@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start:dev": "react-scripts start",
-    "start:build":"cd ../../libs/components && yarn build && cd ../../apps/test && react-scripts start",
+    "start:build": "cd ../../libs/components && yarn build && cd ../../apps/test && react-scripts start",
     "build": "react-scripts build",
     "start:prod": "serve -s build",
     "test": "react-scripts test",
